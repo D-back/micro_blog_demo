@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+<!-- 登录页面  -->
+
+{% block content %}
+<h1>欢迎登录</h1>
+<hr>
+<form action="/uesr/login" method="post" enctype="multipart/form-data">
+
+
+    用户名:<input type="text" name="username" placeholder="请输入用户名"><br />
+    密码:<input type="password" name="password" placeholder="请输入密码"><br />
+
+    <input type="submit" value="登录">
+
+</form>
+
+{% endblock %}
