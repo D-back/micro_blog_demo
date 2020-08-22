@@ -44,18 +44,26 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-
-        user = User.query.filter_by(username = username).one()
-        if not user :
+        try:
+            user = User.query.filter_by(username = username).one()
+            if password != user.password:
+                return '密码错误，请重新输入'
+            session['user_id'] = user.id
+        except Exception:
             return '用户名不存在'
-        if password != user.password:
-            return '密码错误，请重新输入'
-        session['user'] = user.id
 
         return redirect('/user/info')
-
 
     else:
         return render_template('login.html')
 
 
+#用户信息页面
+@user_dp.route('/info')
+def user_info():
+    uid = session.get('user_id')
+    if  not uid:
+        return '您还没有登录，请先登录'
+    else:
+        user = User.query.filter_by(id=uid).one()
+        return render_template('user_info.html',user=user)

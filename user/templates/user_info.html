@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+<!-- 注册页面  -->
+
+{% block content %}
+<h1>用户信息</h1>
+<hr>
+<lable>用户名:{{ user.username }}</lable><br />
+<lable>性别:{{ user.gender }}</lable><br />
+<lable>年龄:{{ user.age }}</lable><br />
+<lable>城市:{{ user.city }}</lable><br />
+<lable>手机号:{{ user.phone }}</lable><br />
+
+
+{% endblock %}

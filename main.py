@@ -12,7 +12,7 @@ from user.views import user_dp
 
 
 app = Flask(__name__)    #创建了一个app模型
-
+app.secret_key = r'@#@3Rfsa464r#%SFASE()$@123#$#RSFSEqweqwrqew134343232DWE!@#@$!#%15'
 #app连接数据库的配置
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:961224@localhost:3306/micro_blog_demo'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -27,7 +27,7 @@ manager = Manager(app)
 migrate = Migrate(app,db)
 manager.add_command('db',MigrateCommand)
 
-
+#注册user蓝图
 app.register_blueprint(user_dp)
 
 
