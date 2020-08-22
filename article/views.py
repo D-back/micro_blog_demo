@@ -40,8 +40,10 @@ def create_article():
         else:
             return redirect('/user/login')
 
+
+#展示最新动态
 @article_dp.route('/show')
-def show_article():
+def show_new_article():
     title = session.get('title')
     if not title:
         return redirect('/article/create')
@@ -49,3 +51,24 @@ def show_article():
         article = Article.query.filter_by(title=title).one()
         return render_template('show_article.html',article=article)
 
+
+#展示所有动态
+@article_dp.route('/read')
+def read_all():
+    uid = session.get('user_id')
+    articles = Article.query.all()
+
+    if uid:
+        return render_template('read_all.html',articles=articles)
+    else:
+        return redirect('/user/login')
+
+
+
+#删除动态
+@article_dp.route('/delete')
+def delete_article():
+    id = request.args.get('id')
+    Article.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect('/user/info')

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+<!-- 展示所有动态  -->
+
+{% block content %}
+<h1>您所有的动态</h1>
+<hr>
+{% for art in articles %}
+<h2>标题:{{ art.title }}</h2>
+<lable>内容:{{ art.content }}</lable><br />
+<a href="/article/delete?id={{ art.id }}">删除文章</a>
+{% endfor %}
+
+
+
+
+{% endblock %}
