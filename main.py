@@ -7,6 +7,7 @@ from flask_migrate import Migrate,MigrateCommand
 #从自己的包中导入SQLAlchemy 实例db对象
 from libs.orm import db
 from user.views import user_dp
+from article.views import article_dp
 
 
 
@@ -29,6 +30,7 @@ manager.add_command('db',MigrateCommand)
 
 #注册user蓝图
 app.register_blueprint(user_dp)
+app.register_blueprint(article_dp)
 
 
 @app.route('/')

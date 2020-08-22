@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+<!--   -->
+
+{% block content %}
+<h1>发表动态</h1>
+<hr>
+<form action="/article/create" method="post" enctype="multipart/form-data">
+    标题:<input type="text" name="title" placeholder="请输入标题"><br />
+    内容:<textarea   name="content" placeholder="发表一下此时此刻的心情吧..."></textarea>
+
+
+    <input type="submit" value="提交">
+
+
+
+</form>
+
+
+{% endblock %}
